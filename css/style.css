@@ -1,0 +1,194 @@
+/* style.css */
+
+	a{
+		color:inherit;
+      text-decoration: none;
+	}
+	
+	a:hover{
+		text-decoration: none; /* Enlève le soulignement au survol, focus et active */
+    	color: inherit; /* Hérite de la couleur du texte au survol, focus et active */
+    	outline: none;
+	}
+
+    .list-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 350px;
+        background-color: #f6f7f7;
+        box-shadow: 0 0px px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      transition: all ease 0.4s;
+    }
+.card:hover{
+	        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.card-open{
+background:#4f94d4;
+}
+
+.card-traite {
+    background-color: #38db6d; /* Remplacez avec la couleur désirée */
+}
+    .card div {
+        margin-bottom: 10px;
+      color:black;
+      display: flex;
+      align-items:center;
+    }
+
+	.card div img{
+		width: 15%;
+	}
+
+	.container-btn{
+		display:flex;
+      justify-content:space-around;
+          flex-wrap: wrap;
+
+	}	
+	
+	.btn-mdev{
+		background-color:#72aee6;
+      	border: none;
+      	border-radius:3px;
+      	padding:8px;
+      color:white;
+      transition: all ease 0.4s;
+	}
+
+.btn-mdev:hover{
+background-color: #0056b3; /* Changement de couleur au survol */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+  color:white;
+}
+
+
+
+.message-stats {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.message-stats p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+
+
+/*Page des messages individuelle*/
+
+.content-info-recept{
+    font-family: Arial, sans-serif;
+  	display:flex;
+  justify-content:space-around;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.container-message{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container-message .container-info {
+display: flex;
+  justify-content:space-around;
+  padding-left:5%;
+  padding-right:5%;
+}
+
+
+.container-message h1 {
+    color: #112D4E;
+    margin-bottom: 20px;
+}
+
+.container-message p{
+    color: #666;
+    line-height: 1.6;
+}
+
+.container-message p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+
+.message-recept {
+    word-wrap: break-word; /* Encapsule les mots longs */
+    white-space: pre-wrap; /* Conserve les espaces et retours à la ligne */
+    overflow-wrap: break-word; /* Assure que le texte ne sort pas de la div */
+    margin: 10px; /* Ajoute un peu d'espace autour du texte */
+    padding: 10px; /* Ajoute du padding pour une meilleure lisibilité */
+    border: 1px solid #ccc; /* Bordure pour distinguer le texte */
+    background-color: #f9f9f9; /* Couleur de fond pour le mettre en évidence */
+}
+
+.info-client{
+ width:100%; 
+}
+
+.fast-contact{
+  text-align:center;
+width:100%;
+}
+
+.container-btn-contact{
+	display: flex;
+    justify-content: space-around;
+}
+
+.content-fast-contact{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+  transition: all ease 0.4s;
+  width:120px;
+}
+
+.content-fast-contact:hover{
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3); 
+  border-radius: 10px;
+}
+
+
+.content-fast-contact p{
+  color:white;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+.content-fast-contact-mail{
+  background-color: lightgreen;
+
+}
+
+.content-fast-contact-phone{
+  background-color: lightblue;
+  margin-bottom:20px;
+
+}
+
+

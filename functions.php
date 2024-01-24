@@ -3,17 +3,14 @@
 Plugin Name: Form-Mdev
 Plugin URI: https://studio-muller.fr
 Description: Form-Mdev est un plugin WordPress conçu pour simplifier la gestion des soumissions de formulaires de contact sur votre site. Il offre une interface d'administration claire et intuitive, permettant une interaction efficace avec les utilisateurs. 
-Version: 1.0.0
+Version: 1.0.1
 Author: Muller Jessy
 Author URI: https://studio-muller.fr
 */
   
 session_start(); 
 
-  /**
- * Enregistre les styles CSS pour la partie administration du plugin.
- * Cette fonction ajoute une feuille de style spécifique au plugin pour l'interface d'administration de WordPress.
- */
+ 
   function mon_plugin_admin_styles() {
     wp_enqueue_style( 'mon-plugin-styles', plugin_dir_url( __FILE__ ) . 'css/style.css' );
 }

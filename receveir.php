@@ -1,47 +1,51 @@
 <?php
 // webhook-receiver.php
-
-echo "Webhook reçu.";
+echo "coucou";
 
 // Assurez-vous que la requête est une requête POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('HTTP/1.0 405 Method Not Allowed');
-    echo "Méthode non autorisée.";
     exit;
 }
 
-// Sécurisez votre webhook ici (par exemple, en vérifiant un secret partagé)
+// Sécurisez votre webhook ici (en vérifiant un secret partagé, si vous en utilisez un)
 
 // Obtenez les données du webhook
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Vérifiez si des fichiers pertinents ont été modifiés
 $filesModified = false;
+$relevantFiles = []; // Stockez les chemins des fichiers pertinents ici
+
 foreach ($data['commits'] as $commit) {
     foreach ($commit['modified'] as $modifiedFile) {
-        // Remplacer ceci par la logique pour déterminer si le fichier modifié est pertinent pour votre plugin
-        if ($modifiedFile == 'chemin/vers/fichier/important.php') {
+        // Ajoutez une logique pour déterminer si le fichier modifié est pertinent pour votre plugin
+        // Par exemple, si vous savez que votre plugin ne concerne que certains fichiers ou répertoires :
+        if (strpos($modifiedFile, 'https://freelance-muller.fr/form-mdev/') !== false) {
             $filesModified = true;
-            break 2; // Sortir des deux boucles si un fichier pertinent est modifié
+            $relevantFiles[] = $modifiedFile;
         }
     }
 }
 
 if ($filesModified) {
-    // Code pour télécharger et mettre à jour les fichiers du plugin
-    // Par exemple, vous pouvez utiliser file_get_contents() ou cURL pour télécharger les fichiers
-    // Assurez-vous de gérer les autorisations, de décompresser les fichiers si nécessaire, etc.
+    // Téléchargez et mettez à jour les fichiers du plugin
+    foreach ($relevantFiles as $file) {
+        // Construisez l'URL du fichier sur GitHub
+        // Notez que vous devez utiliser le token d'accès si le dépôt est privé
+        $url = "https://raw.githubusercontent.com/username/repository/branch/{$file}";
 
-    // Exemple de téléchargement et mise à jour d'un fichier
-    $urlDuFichier = 'https://raw.githubusercontent.com/user/repo/branch/chemin/vers/fichier/important.php';
-    $nouveauContenu = file_get_contents($urlDuFichier);
-    if ($nouveauContenu !== false) {
-        file_put_contents('/chemin/local/du/plugin/important.php', $nouveauContenu);
-        echo "Plugin mis à jour avec succès";
-    } else {
-        echo "Erreur lors du téléchargement du fichier.";
+        // Déterminez le chemin local où le fichier doit être enregistré à la racine du plugin
+        $localPath = "https://freelance-muller.fr/form-mdev/{$file}";
+
+        // Utilisez file_get_contents et file_put_contents pour télécharger et sauvegarder le fichier
+        $fileData = file_get_contents($url);
+        if ($fileData !== false) {
+            file_put_contents($localPath, $fileData);
+        }
     }
+
+    echo "Plugin mis à jour avec succès";
 } else {
     echo "Aucune mise à jour nécessaire";
 }
-?>

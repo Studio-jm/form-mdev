@@ -10,7 +10,7 @@ Author URI: https://studio-muller.fr
   
 session_start(); 
 
- /*test 222*/
+ /*test*/
   function mon_plugin_admin_styles() {
     wp_enqueue_style( 'mon-plugin-styles', plugin_dir_url( __FILE__ ) . 'css/style.css' );
 }
